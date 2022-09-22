@@ -2,12 +2,15 @@ import React from 'react'
 import styled from 'styled-components'
 import img1 from '../Img/1.jpg'
 import icon1 from '../Img/4.jpg'
+import {BsBookmarkDashFill} from 'react-icons/bs'
+import {AiFillLike, AiFillDislike} from 'react-icons/ai'
 const Home = () => {
   return (
     <>
      <Container>
         <Wrapper>
           <Cards>
+
             <Card>
                 <Title>First Title</Title>
                 <Flex>
@@ -26,7 +29,10 @@ const Home = () => {
                       <Time>4:53pm</Time>
                     </span>
                   </Icon>
-                  <Bookmark></Bookmark>
+                  <span className='icon'>
+                    <Bookmark id='book'><AiFillDislike/></Bookmark>
+                    <Like id='like'><AiFillLike/></Like>
+                  </span>
                 </Bottom>
             </Card>
             <Card>
@@ -47,28 +53,10 @@ const Home = () => {
                       <Time>4:53pm</Time>
                     </span>
                   </Icon>
-                  <Bookmark></Bookmark>
-                </Bottom>
-            </Card>
-            <Card>
-                <Title>First Title</Title>
-                <Flex>
-                  <Image><img src={img1} alt="" /></Image>
-                  <Text>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae a aut ut culpa, provident aspernatur! Voluptates placeat illum harum sit ex veniam, labore mollitia at dolores asperiores laborum. Autem, quos. <br />
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita necessitatibus molestias animi. Repudiandae deleniti sequi velit corporis natus. Dolorum adipisci eaque quia consequuntur. Voluptate maxime quidem quaerat eligendi facere deleniti! <br />
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto, dolor? Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque amet minus quis officia consequuntur cum, quasi quidem iusto iste omnis beatae ducimus consectetur nam alias, commodi, illum excepturi dolor necessitatibus.grg3ggfrfgfgfgg
-                  </Text>
-                </Flex>
-                <Bottom>
-                  <Icon>
-                    <img src={icon1} alt="" />
-                    <span>
-                      <Author>John Doe</Author>
-                      <Time>4:53pm</Time>
-                    </span>
-                  </Icon>
-                  <Bookmark></Bookmark>
+                  <span className='icon'>
+                    <Bookmark id='book'><AiFillDislike/></Bookmark>
+                    <Like id='like'><AiFillLike/></Like>
+                  </span>
                 </Bottom>
             </Card>
           </Cards>
@@ -185,6 +173,14 @@ const Flex = styled.div`
 `
 const Bottom = styled.div`
   margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .icon{
+    width: 100px;
+    display: flex;
+    justify-content: space-between;
+  }
 `
 const Icon = styled.div`
   display: flex;
@@ -197,6 +193,32 @@ const Icon = styled.div`
     height: 50px;
   }
 `
-const Author = styled.div``
-const Time = styled.div``
-const Bookmark = styled.div``
+const Author = styled.div`
+  font-size: 17px;
+  font-weight: 600;
+  :hover{
+    text-decoration: underline 0.1rem;
+    cursor: pointer;
+  }
+`
+const Time = styled.small``
+const Like = styled.button`
+  font-size: 25px;
+  cursor: pointer;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  :focus{
+    color: #FF785A;
+  }
+`
+const Bookmark = styled.button`
+  font-size: 25px;
+  cursor: pointer;
+  background-color: transparent;
+  outline: none;
+  border: none;
+    :focus{
+    color: #A9A587 !important;
+  }
+`
