@@ -177,6 +177,7 @@ const Title = styled.div`
 const Flex = styled.div`  
   display: flex;
   justify-content: space-between;
+  align-items: center;
   @media only screen and (min-width:300px) and (max-width:800px){
     flex-wrap: wrap;
     justify-content: center;
