@@ -1,31 +1,29 @@
 import React from 'react'
 import styled from 'styled-components'
-import img1 from '../Img/1.jpg'
-import icon1 from '../Img/4.jpg'
-import {BsBookmarkDashFill} from 'react-icons/bs'
 import {AiFillLike, AiFillDislike} from 'react-icons/ai'
+import Blog from '../Blog.json'
+
 const Home = () => {
   return (
     <>
      <Container>
         <Wrapper>
           <Cards>
-
-            <Card>
-                <Title>First Title</Title>
+          {
+            Blog.map((el)=>(
+              <Card key={el.id}>
+                <Title>{el.title}</Title>
                 <Flex>
-                  <Image><img src={img1} alt="" /></Image>
+                  <Image><img src={el.image} alt="" /></Image>
                   <Text>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae a aut ut culpa, provident aspernatur! Voluptates placeat illum harum sit ex veniam, labore mollitia at dolores asperiores laborum. Autem, quos. <br />
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita necessitatibus molestias animi. Repudiandae deleniti sequi velit corporis natus. Dolorum adipisci eaque quia consequuntur. Voluptate maxime quidem quaerat eligendi facere deleniti! <br />
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto, dolor? Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque amet minus quis officia consequuntur cum, quasi quidem iusto iste omnis beatae ducimus consectetur nam alias, commodi, illum excepturi dolor necessitatibus.grg3ggfrfgfgfgg
+                    {el.message.mini}
                   </Text>
                 </Flex>
                 <Bottom>
                   <Icon>
-                    <img src={icon1} alt="" />
+                    <img src={el.icon} alt="" />
                     <span>
-                      <Author>John Doe</Author>
+                      <Author>{el.author}</Author>
                       <Time>4:53pm</Time>
                     </span>
                   </Icon>
@@ -35,30 +33,9 @@ const Home = () => {
                   </span>
                 </Bottom>
             </Card>
-            <Card>
-                <Title>First Title</Title>
-                <Flex>
-                  <Image><img src={img1} alt="" /></Image>
-                  <Text>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae a aut ut culpa, provident aspernatur! Voluptates placeat illum harum sit ex veniam, labore mollitia at dolores asperiores laborum. Autem, quos. <br />
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita necessitatibus molestias animi. Repudiandae deleniti sequi velit corporis natus. Dolorum adipisci eaque quia consequuntur. Voluptate maxime quidem quaerat eligendi facere deleniti! <br />
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto, dolor? Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque amet minus quis officia consequuntur cum, quasi quidem iusto iste omnis beatae ducimus consectetur nam alias, commodi, illum excepturi dolor necessitatibus.grg3ggfrfgfgfgg
-                  </Text>
-                </Flex>
-                <Bottom>
-                  <Icon>
-                    <img src={icon1} alt="" />
-                    <span>
-                      <Author>John Doe</Author>
-                      <Time>4:53pm</Time>
-                    </span>
-                  </Icon>
-                  <span className='icon'>
-                    <Bookmark id='book'><AiFillDislike/></Bookmark>
-                    <Like id='like'><AiFillLike/></Like>
-                  </span>
-                </Bottom>
-            </Card>
+            
+            ))
+          }
           </Cards>
         </Wrapper>
      </Container> 
@@ -139,12 +116,13 @@ const Text = styled.div`
 `
 const Title = styled.div`
   font-size: 42px;
-  width: 300px;
+  text-align: center;
   position: relative;
   font-weight: 400;
   text-align: center;
   font-style: oblique;
   margin: 10px auto;
+  text-transform: capitalize;
   ::after, ::before{
     content: " ";
     position: absolute;
@@ -154,12 +132,13 @@ const Title = styled.div`
     border-radius: 0px 4px 4px 0px;
     background-color: #FF785A;
   }::after{
-    left: 0;
+    left: 10rem;
     border-radius: 4px 0px 0px 4px;
+    
   }
   ::before{
     border-radius: 0px 4px 4px 0px;
-    right: 0;
+    right: 10rem;
   }
 `
 const Flex = styled.div`  
@@ -184,18 +163,20 @@ const Bottom = styled.div`
 `
 const Icon = styled.div`
   display: flex;
-  width: 130px;
+  /* width: 130px; */
   justify-content: space-between;
   align-items: center;
   img{
     border-radius: 50%;
     width: 50px;
     height: 50px;
+    margin-right: 10px;
   }
 `
 const Author = styled.div`
   font-size: 17px;
   font-weight: 600;
+  text-transform: capitalize;
   :hover{
     text-decoration: underline 0.1rem;
     cursor: pointer;
