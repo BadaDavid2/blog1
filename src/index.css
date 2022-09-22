@@ -21,6 +21,19 @@
 
 ::-webkit-scrollbar-thumb:hover{
   background-color: #8f8c72;
+}    
+@media only screen and (min-width:300px) and (max-width:800px){
+  ::-webkit-scrollbar{
+    width: 8px;
+    height: 5px;
+    scroll-behavior: auto;
+  }
+  ::-webkit-scrollbar-thumb{
+    background-color: transparent;
+  }
+  ::-webkit-scrollbar-track{
+    background-color: transparent;
+  }
 }
 body {
   margin: 0;
